@@ -1,0 +1,60 @@
+.navbar {
+    background: rgba(0,0,0,0.5);
+}
+
+.navbar-brand {
+    background: rgba(0,0,0,0.5);
+}
+
+.navbar-menu {
+    background: rgba(0,0,0,0.5);
+}
+
+.buttons {
+    justify-content: center;
+}
+
+.landing-section {
+    min-height: 5vh;
+    width: 100%;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+  
+.landing-section-content {
+    padding: 2rem 0;
+    background: rgba(250, 190, 88, 1);
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: rgb(0, 0, 0);
+    position: relative;
+    text-align: center
+}
+
+.landing-main {
+    background-size: cover;
+    color: #222;
+    text-align: center;
+}
+
+.landing-main-text {
+    padding: 1rem;
+}
+
+.landing-features {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.landing-feature {
+    margin: 2rem;
+    min-width: 300px;
+}
