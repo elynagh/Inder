@@ -14,5 +14,6 @@ __pycache__
 db.sqlite3
 media
 
-# env #
+# enviro and env #
 /inder/
+/inder_app/inder_app/.env
