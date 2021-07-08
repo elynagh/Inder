@@ -4,7 +4,12 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    pass
+    first_name = models.CharField(max_length=128, null=True)
+    last_name = models.CharField(max_length=128, null=True)
+    show_last_name = models.BooleanField(default=False)
+    bio = models.CharField(max_length=1280, null=True, blank=True)
+    idea_generator = models.BooleanField(default=False)
+    collaborator = models.BooleanField(default=False)
 
 class Idea(models.Model):
     idea_id = models.IntegerField(primary_key=True)

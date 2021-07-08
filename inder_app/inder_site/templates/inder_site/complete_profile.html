@@ -1,0 +1,58 @@
+{% extends 'inder_site/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inder_site/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-success alert-dismissible">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+    <div>
+        <h1>Welcome {{ user.first_name }} {{ user.last_name }}, please finish setting up your profile.</h1>
+        <form class="form-signin" id='profile_form' method="POST" action="{% url "complete_profile" %}" enctype='multipart/form-data'>
+            {% csrf_token %}
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent">
+                        <div class="tile is-child box">
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <label class="label" for="id_first_name">First name:</label> <input class="input is-focused" id="id_first_name" maxlength="128" name="first_name" type="text" value="{{user.first_name}}">
+                                </div>
+                                <div class="column is-6">
+                                    <p><label class="label" for="id_last_name">Last name:</label> <input class="input is-focused" id="id_last_name" maxlength="128" name="last_name" type="text" value="{{user.last_name}}"></p>
+                                </div>
+                            </div>
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <p><label class="label" for="id_show_last_name">Show Last Name</label> <input type="checkbox" class="checkbox is-focused" id="id_show_last_name" name="show_last_name" type="text" {% if user.show_last_name %} checked{% endif %}></p>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <p><label class="label" for="id_bio">Bio:</label> <textarea class="input is-focused" rows="1" name="bio" id="id_bio" maxlength="1280">{{user.bio}}</textarea></p>
+                            </div>
+                            <br>
+                            <h2>Account Type:</h2>
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <p><label class="label" for="idea_generator">Idea Generator</label> <input type="checkbox" class="checkbox is-focused" id="id_idea_generator" maxlength="128" name="idea_generator" type="text" {% if user.idea_generator %} checked{% endif %}></p>
+                                </div>
+                                <div class="column is-6">
+                                    <p><label class="label" for="collaborator">Collaborator</label> <input type="checkbox" class="checkbox is-focused" id="id_collaborator" maxlength="128" name="collaborator" type="text" {% if user.collaborator %} checked{% endif %}></p>
+                                </div>
+                            </div>
+                            <br>
+                            <h2><b>To change password, please log out and use the authentication portal to do so.</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Save</button>
+            </form>
+    </div>
+{% endblock %}

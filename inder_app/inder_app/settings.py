@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import environ
+import environ, os
 
 # Initialise environment variables
 env = environ.Env()
@@ -82,7 +82,8 @@ ROOT_URLCONF = 'inder_app.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'your_app_name', 'templates', 'your_app_name'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
