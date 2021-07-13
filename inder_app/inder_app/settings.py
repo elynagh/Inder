@@ -57,6 +57,7 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
     'profile',
     'email'
 ]
+SOCIAL_AUTH_PROTECTED_USER_FIELDS = ['first_name', 'last_name']
 
 AUTHENTICATION_BACKENDS = {
     'social_core.backends.auth0.Auth0OAuth2',

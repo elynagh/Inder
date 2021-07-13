@@ -1,0 +1,38 @@
+{% extends 'inder_site/base.html' %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'inder_site/style.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+        <div class="alert alert-success alert-dismissible">
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+        </div>
+    {% endif %}
+    <div>
+        <h1>Welcome {{ user.first_name }} {{ user.last_name }}, you have choosen to be an idea creator, please create an idea before continuing.</h1>
+        <form class="form-signin" id='profile_form' method="POST" action="{% url "create_idea" %}" enctype='multipart/form-data'>
+            {% csrf_token %}
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent">
+                        <div class="tile is-child box">
+                            <div class="columns">
+                                <div class="column is-6">
+                                    <label class="label" for="id_idea_name">Idea Name:</label> <input class="input is-focused" id="id_idea_name" maxlength="128" name="idea_name" type="text">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <p><label class="label" for="id_description">Description:</label> <textarea class="input is-focused" rows="1" name="description" id="id_description" maxlength="1280"></textarea></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">Save</button>
+            </form>
+    </div>
+{% endblock %}
